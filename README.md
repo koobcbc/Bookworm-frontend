@@ -10,12 +10,12 @@
 - []()
 
 ## Git Repos
-- [frontend git]() 
+- [frontend git](https://github.com/koobcbc/ReadWatchRecord-frontend) 
 - [backend git](https://github.com/koobcbc/readwatchrecord-backend)
 
 # Wireframs/Architecture
 - [WireFrame](https://www.figma.com/file/HL5L6aIwSGxrY9KnjjpSPg/ReadWatchRecord?node-id=0%3A1)
-- [React Architecture]()
+- [React Architecture](https://docs.google.com/spreadsheets/d/1zW6M2NflVrBahyQOWUelU3vA32yDPH29mvx0glE2lOs/edit?usp=sharing)
 
 # Time Priority Matrix/Chart
   
@@ -47,11 +47,15 @@
 #### MVP
 - Create PostgresDB using Ruby on Rails
 - Use the api created by PostgresDB & Google Books & Google Movie
-- Create components
-- Create Functionality for reading, adding, deleting, and updating
+- Create routes between components in React
+- Allow user to search for books/movies and display information
 - Allow user to record reviews
-- Allow user to view/delete/update their past reviews
+- Create CRUD Functionality for personal book/movie data
+- Create User Login / Verification using React 
+
 #### PostMVP
+- Allow user to set a goal
+- Create characters based on reading levels + different costumes that unlock based on # of movies watched
 - Additional Styling and animations
 
 ## Components description
