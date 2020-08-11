@@ -163,20 +163,21 @@ Snippet of API
     - year - string (required)
     - type - string (required)
     - publisher - string (required)
-    - bookcover_url - string (required)
-    - page_number - integer (required)
+    - bookcoverUrl - string (required)
+    - pageNumber - integer (required)
     - description - text (required)
     - star - integer 
     - reviews - array of strings
     - notes - array of strings
     - quotes - array of strings
-    - profile_id - integer
+    - profileId - integer
 
 - Profile Model
-    - nickname - string
+    - nickname - string (required)
     - description - string
-    - profile pic - string
+    - profilePicture - string
     - goal - integer
+    - totalPageNum - integer
     
 - Feedback Model
     - feedback - array of strings
