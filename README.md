@@ -161,23 +161,26 @@ Snippet of API
     - title - string (required)
     - authors - string (required)
     - year - string (required)
-    - type - string (required)
     - publisher - string (required)
-    - bookcoverUrl - string (required)
+    - imageLinks - array of strings (required)
     - pageNumber - integer (required)
     - description - text (required)
-    - star - integer 
+    - language - string
+    - categories - array of strings
+    - canonicalVolumeLink - string
+    - starRating - integer 
     - reviews - array of strings
     - notes - array of strings
     - quotes - array of strings
     - profileId - integer
 
-- Profile Model
+- User Model
     - nickname - string (required)
     - description - string
     - profilePicture - string
-    - goal - integer
+    - readingGoal - integer
     - totalPageNum - integer
+    - books [Book Model scaffolded]
     
 - Feedback Model
     - feedback - array of strings
