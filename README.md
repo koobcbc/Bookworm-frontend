@@ -111,9 +111,29 @@
 
 
 # Backend Description
-- models/Schemas
+- Models/Schemas
 
+- Book Model
+    - title - string (required)
+    - year - integer (required)
+    - type - string (required)
+    - summary - text (required)
+    - bookcover_url - string (required)
+    - page_number - integer (required)
+    - star - integer 
+    - reviews - array of strings
+    - notes - array of strings
+    - quotes - array of strings
+    - profile_id - integer
 
+- Profile Model
+    - nickname - string
+    - description - string
+    - profile pic - string
+    - goal - integer
+    
+- Feedback Model
+    - feedback - array of strings
 
 # Additional libraries
 - Axios
