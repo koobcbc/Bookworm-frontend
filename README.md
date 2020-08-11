@@ -76,28 +76,38 @@
     - User Log in page
 - Main
     - Main page that users get navigated into when logged in. This page includes this month's recommendations for books and movies
-- RecBooks.js
+- RecBooks
     - This component generates monthly recommendation for books
-- RecMovies.js
-    - This component generates monthly recommendation for movies
-- SearchBook.js / SearchMovie.js
-    - Search box for books/movies, renders information on the searched book/movie
-- BookInfo.js / MovieInfo.js
-    - Shows info on book/movie that was searched.
-- RecordBook.js / RecordMovie.js
-    - Allows the user to write a review and give stars on the book/movie
-- Note.js
-    - A form that is used for writing personal notes on a particular book/movie
-- Quote.js
-    - A form that allows user to add their favorite quotes from a particular book/movie
-- StarReview.js
-    - A component that allows user to give stars on a book/movie
+- SearchBook
+    - Search box for books, renders information on the searched book
+- BookInfo
+    - Shows info on book that was searched.
+- RecordBook
+    - Allows the user to write a review and give stars on the book
+- Note
+    - A form that is used for writing personal notes on a particular book
+- Quote
+    - A form that allows user to add their favorite quotes from a particular book
+- StarReview
+    - A component that allows user to give stars on a book
 - MyPage
-- PastReviews
-  - Page that contains all the details of a specifiv past order.
+    - Page where users can view their profile / information and their reviews on the books they read / compilation of their favorite quotes / monthly stats of reading
+- MyBookcase
+    - Overview of the books that the user has read. This component includes a filter function based on dates.
+- Book
+    - When the user clicks on a single book in MyBookcase, it is routed to this component displaying information / reviews on the book selected
+- FavQuotes
+    - List of Favorite Quotes from the user. Drops down with an accordion dropdown function.
+- Profile
+    - Displays user's nickname, description, profile pic, goal of the year, statistics on the books read
+- Statistics
+    - Displays statistics on the books read (show which genre you read the most, # of books read)
+- Feedback
+    - Through this form, the user is able to send feedback of the app to the creator of the app.
+- Logout
+    - Log out function
 - About
-  - This will be the "Team Page" with photos and descriptions of everyone that worked on the project
-
+  - This will be about page with the description of the app
 
 
 # Backend Description
