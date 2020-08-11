@@ -7,11 +7,55 @@
 
 # Project Links 
 ## Project URL
-- []()
+- [Deployment Link]()
 
 ## Git Repos
 - [frontend git](https://github.com/koobcbc/Bookworm-frontend) 
 - [backend git](https://github.com/koobcbc/Bookworm-backend)
+
+## API
+- https://www.googleapis.com/books/v1/volumes?q={search terms}
+- Example: https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes
+
+Snippet of API
+```
+{
+"kind": "books#volumes",
+"totalItems": 119,
+"items": [
+{
+"kind": "books#volume",
+"id": "gK98gXR8onwC",
+"etag": "+bk95ZFRnSM",
+"selfLink": "https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC",
+"volumeInfo": {
+"title": "Flowers for Algernon",
+"subtitle": "A One-act Play",
+"authors": [],
+"publisher": "Dramatic Publishing",
+"publishedDate": "1969",
+"industryIdentifiers": [],
+"readingModes": {},
+"pageCount": 32,
+"printType": "BOOK",
+"averageRating": 5,
+"ratingsCount": 1,
+"maturityRating": "NOT_MATURE",
+"allowAnonLogging": false,
+"contentVersion": "0.0.2.0.preview.1",
+"panelizationSummary": {},
+"imageLinks": {},
+"language": "en",
+"previewLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&pg=PA3&dq=flowers+inauthor:keyes&hl=&cd=1&source=gbs_api",
+"infoLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&dq=flowers+inauthor:keyes&hl=&source=gbs_api",
+"canonicalVolumeLink": "https://books.google.com/books/about/Flowers_for_Algernon.html?hl=&id=gK98gXR8onwC"
+},
+"saleInfo": {},
+"accessInfo": {},
+"searchInfo": {}
+}
+}
+```
 
 # Wireframs/Architecture
 - [WireFrame](https://www.figma.com/file/HL5L6aIwSGxrY9KnjjpSPg/BookWorm-MovieWorm?node-id=0%3A1)
@@ -115,11 +159,13 @@
 
 - Book Model
     - title - string (required)
-    - year - integer (required)
+    - authors - string (required)
+    - year - string (required)
     - type - string (required)
-    - summary - text (required)
+    - publisher - string (required)
     - bookcover_url - string (required)
     - page_number - integer (required)
+    - description - text (required)
     - star - integer 
     - reviews - array of strings
     - notes - array of strings
