@@ -20,40 +20,40 @@
 Snippet of API
 ```
 {
-"kind": "books#volumes",
-"totalItems": 119,
-"items": [
-{
-"kind": "books#volume",
-"id": "gK98gXR8onwC",
-"etag": "+bk95ZFRnSM",
-"selfLink": "https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC",
-"volumeInfo": {
-"title": "Flowers for Algernon",
-"subtitle": "A One-act Play",
-"authors": [],
-"publisher": "Dramatic Publishing",
-"publishedDate": "1969",
-"industryIdentifiers": [],
-"readingModes": {},
-"pageCount": 32,
-"printType": "BOOK",
-"averageRating": 5,
-"ratingsCount": 1,
-"maturityRating": "NOT_MATURE",
-"allowAnonLogging": false,
-"contentVersion": "0.0.2.0.preview.1",
-"panelizationSummary": {},
-"imageLinks": {},
-"language": "en",
-"previewLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&pg=PA3&dq=flowers+inauthor:keyes&hl=&cd=1&source=gbs_api",
-"infoLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&dq=flowers+inauthor:keyes&hl=&source=gbs_api",
-"canonicalVolumeLink": "https://books.google.com/books/about/Flowers_for_Algernon.html?hl=&id=gK98gXR8onwC"
-},
-"saleInfo": {},
-"accessInfo": {},
-"searchInfo": {}
-}
+    "kind": "books#volumes",
+    "totalItems": 119,
+    "items": [
+    {
+        "kind": "books#volume",
+        "id": "gK98gXR8onwC",
+        "etag": "+bk95ZFRnSM",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC",
+        "volumeInfo": {
+        "title": "Flowers for Algernon",
+        "subtitle": "A One-act Play",
+        "authors": [],
+        "publisher": "Dramatic Publishing",
+        "publishedDate": "1969",
+        "industryIdentifiers": [],
+        "readingModes": {},
+        "pageCount": 32,
+        "printType": "BOOK",
+        "averageRating": 5,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.2.0.preview.1",
+        "panelizationSummary": {},
+        "imageLinks": {},
+        "language": "en",
+        "previewLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&pg=PA3&dq=flowers+inauthor:keyes&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&dq=flowers+inauthor:keyes&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Flowers_for_Algernon.html?hl=&id=gK98gXR8onwC"
+        },
+        "saleInfo": {},
+        "accessInfo": {},
+        "searchInfo": {}
+    }
 }
 ```
 
