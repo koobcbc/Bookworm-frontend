@@ -1,4 +1,4 @@
-# ReadWatchRecord
+# BookWorm
 
 # Description
 
@@ -60,18 +60,39 @@
 
 ## Components description
 - Header
+    - Header includes Logo and title of the page
 - Nav
+    - Navigation bar that allows user to navigate through searchBooks, searchMovies, MyPage, Summary, About pages
+- Footer
+    - Shared component with copyright info etc.
 - Home
+    - Home Page of the website that includes logo, title of the app, and log in form.
 - Authentication
-- NewBookReview
-- NewMovieReview
+    - User Log in page
+- Main
+    - Main page that users get navigated into when logged in. This page includes this month's recommendations for books and movies
+- RecBooks.js
+    - This component generates monthly recommendation for books
+- RecMovies.js
+    - This component generates monthly recommendation for movies
+- SearchBook.js / SearchMovie.js
+    - Search box for books/movies, renders information on the searched book/movie
+- BookInfo.js / MovieInfo.js
+    - Shows info on book/movie that was searched.
+- RecordBook.js / RecordMovie.js
+    - Allows the user to write a review and give stars on the book/movie
+- Note.js
+    - A form that is used for writing personal notes on a particular book/movie
+- Quote.js
+    - A form that allows user to add their favorite quotes from a particular book/movie
+- StarReview.js
+    - A component that allows user to give stars on a book/movie
 - MyPage
 - PastReviews
   - Page that contains all the details of a specifiv past order.
 - About
   - This will be the "Team Page" with photos and descriptions of everyone that worked on the project
-- Footer
-  - Shared component with copyright info etc.
+
 
 
 # Backend Description
