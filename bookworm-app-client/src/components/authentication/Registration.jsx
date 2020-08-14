@@ -37,8 +37,8 @@ const Registration = ({ handleSubmitFromApp }) => {
         }
     }
     
-    console.log(userInfo)
-    console.log(passwordMatch)
+    // console.log(userInfo)
+    // console.log(passwordMatch)
 
     return (
         <>

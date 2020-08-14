@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from './components/ApiConfig'
 
-import Home from './components/routes/Home/Home'
+import Home from './components/routes/home/Home'
 import Registration from './components/authentication/Registration'
 import LoginForm from './components/authentication/LoginForm'
 
 
-
-
 const App = (props) => {
+  const history = useHistory();
+
   let FormData = require('form-data');
 
   const [registeredUserInfo, setRegisteredUserInfo] = useState({})
@@ -41,6 +41,7 @@ const App = (props) => {
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+      history.push("/");
   }
 
   }, [registeredUserInfo])

@@ -3,6 +3,20 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const LoginForm = () => {
+
+    const [userInfo, setUserInfo] = useState({
+        username: "",
+        password: "",
+    })
+
+    const handleChange = (event) => {
+        //console.log("event", event.target.name, event.target.value);
+        setUserInfo({
+          ...userInfo,
+          [event.target.name]: event.target.value,
+        });
+    };
+
     return (
         <>
 
