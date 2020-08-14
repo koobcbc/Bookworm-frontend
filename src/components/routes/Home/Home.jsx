@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '../../../bookworm_logo.png'
 import { Link } from 'react-router-dom'
 
@@ -6,13 +6,79 @@ import LoginForm from '../../authentication/LoginForm'
 
 import Button from 'react-bootstrap/Button';
 
-const Home = ( ) => {
+const Home = ({ handleUserInfoFromApp }) => {
+
+    const [loginInfo, setLoginInfo] = useState({})
+    const [loginSuccessful, setLoginSuccessful] = useState(true)
+
+    // FOR LOGIN---------------------------VV
+    const handleSubmitForLoginFromHome = (input) => {
+        console.log('handling submit from Home - LoginUserInfo', input)
+        setLoginInfo(input)
+    }
+
+        // authorization function (after login) --> GET user info using id and pass it to the App
+    const authorization = (token, id) => {
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+        var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch(`http://localhost:3000/users/${id}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result)
+            handleUserInfoFromApp(result)
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    let LoginFormdata = new FormData();
+    LoginFormdata.append("user[username]", loginInfo.username);
+    LoginFormdata.append("user[password]", loginInfo.password);
+
+    useEffect(()=>{
+        if(loginInfo.username !== undefined){
+        let requestOptions = {
+        method: 'POST',
+        body: LoginFormdata,
+        redirect: 'follow'
+        };
+        
+        fetch("http://localhost:3000/users/login", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            if (result.status==200){
+                authorization(result.token, result.user.id)
+            }
+            else{
+                setLoginSuccessful(false)
+            }
+        })
+        .catch(error => console.log('error', error));
+        // history.push("/");
+        }
+    }, [loginInfo])
+
     return(
         <>
             <h1>BOOKWORM</h1>
             <img src={logo} width="200px"/>
-            <LoginForm />
+            <LoginForm handleSubmitForLoginFromHome={handleSubmitForLoginFromHome}/>
             <Link to="/signup"><Button>Sign Up</Button></Link>
+            {loginSuccessful ? null :
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Error! </strong> Password Not Matching.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div> 
+            }
         </>
     )
 }

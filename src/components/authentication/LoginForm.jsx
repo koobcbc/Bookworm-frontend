@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const LoginForm = () => {
-
+const LoginForm = ({ handleSubmitForLoginFromHome }) => {
+    
     const [userInfo, setUserInfo] = useState({
         username: "",
         password: "",
@@ -17,40 +17,46 @@ const LoginForm = () => {
         });
     };
 
-    return (
-        <>
+    const handleSubmit = (e) => {
+        document.getElementById("login_form").reset();
+        console.log('handling Submit' - userInfo) 
+        e.preventDefault()
+        handleSubmitForLoginFromHome(userInfo)
+        setUserInfo({})
+        
+    }
 
-            {/* // <Form onSubmit={handleSubmit}>
-            //   <Form.Group controlId="formBasicUsername">
-            //     <Form.Label>Email</Form.Label>
-            //     <Form.Control
-            //       type="username"
-            //       placeholder="Username"
-            //       value={username}
-            //       name="username"
-            //       onChange={handleChange}
-            //       required
-            //     />
-            //   </Form.Group>
+    return (
+            <Form onSubmit={handleSubmit} id="login_form">
+              <Form.Group controlId="formBasicUsername">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="username"
+                  placeholder="Username"
+                  value={userInfo.username}
+                  name="username"
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
         
-            //   <Form.Group controlId="formBasicPassword">
-            //     <Form.Label>Password</Form.Label>
-            //     <Form.Control
-            //       type="password"
-            //       placeholder="Password"
-            //       value={password}
-            //       name="password"
-            //       onChange={handleChange}
-            //       required
-            //     />
-            //   </Form.Group>
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={userInfo.password}
+                  name="password"
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
         
-            //   <Button variant="primary" type="submit">
-            //     Login
-            //   </Button>
-            // </Form> */}
+              <Button variant="primary" type="submit">
+                Login
+              </Button>
+            </Form>
             
-        </>
     );
 }
 
