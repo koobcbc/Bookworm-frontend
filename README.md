@@ -70,7 +70,7 @@ Snippet of API
 | Setup Server | E | .5hr| hrs | hrs |
 | Set up Connections  | E | .5hrs| hrs | hrs |
 | create Seed File  | M | 2hrs | hrs | hrs |
-| Research | E | 2hrs| hrs | hrs |
+| Research for Seed Data | E | 3hrs| hrs | hrs |
 | Deployment  | H | 1hr| hrs | hrs |
 | Total | H | 10hrs | hrs | hrs |
 
