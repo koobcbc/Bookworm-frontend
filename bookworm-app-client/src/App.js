@@ -8,6 +8,7 @@ import apiUrl from './components/ApiConfig'
 import Home from './components/routes/home/Home'
 import Registration from './components/authentication/Registration'
 import LoginForm from './components/authentication/LoginForm'
+import Footer from './components/shared/Footer'
 
 
 const App = (props) => {
@@ -16,14 +17,16 @@ const App = (props) => {
   let FormData = require('form-data');
 
   const [registeredUserInfo, setRegisteredUserInfo] = useState({})
-  let formdata = new FormData();
-  formdata.append("user[username]", registeredUserInfo.username);
-  formdata.append("user[password]", registeredUserInfo.password);
+  const [userInfo, setUserInfo] = useState({})
+
+  let RegistrationFormdata = new FormData();
+  RegistrationFormdata.append("user[username]", registeredUserInfo.username);
+  RegistrationFormdata.append("user[password]", registeredUserInfo.password);
 
   console.log('App - registeredUserInfo', registeredUserInfo)
-  console.log(formdata)
+  console.log(RegistrationFormdata)
 
-
+  // FOR REGISTRATION-----------------------VV
   const handleSubmitFromApp = (input) => {
     console.log('handling submit from App - registeredUserInfo', input)
     setRegisteredUserInfo(input)
@@ -33,7 +36,7 @@ const App = (props) => {
     if(registeredUserInfo.username !== undefined){
     let requestOptions = {
       method: 'POST',
-      body: formdata,
+      body: RegistrationFormdata,
       redirect: 'follow'
     };
     
@@ -42,21 +45,29 @@ const App = (props) => {
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
       history.push("/");
+    }
+  }, [registeredUserInfo])
+  // ----------------------------------registration END ^
+
+
+  // -------------HANDLING USER INFO AFTER LOGIN AUTHENTICATION----
+  const handleUserInfoFromApp = (info) => {
+    console.log('handle user info from app - ', info)
+    setUserInfo(info)
   }
 
-  }, [registeredUserInfo])
-
-
-
+  // -------------handling user info END ^
 
   return (
     <div className="App">
     <Switch>
-      <Route exact path='/' component={ Home }/>
+      <Route exact path='/' render={(props) => <Home {...props} handleUserInfoFromApp={handleUserInfoFromApp} />} />
       <Route path='/signup'render={(props) => <Registration {...props} handleSubmitFromApp={handleSubmitFromApp}/>} />
     </Switch>
+    <Footer />
   </div>
   );
 }
+
 
 export default withRouter(App);
