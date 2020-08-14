@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Route, Switch, withRouter } from 'react-router-dom'
+import axios from 'axios'
 
+import apiUrl from './components/ApiConfig'
 
 import Home from './components/routes/Home/Home'
 import Registration from './components/authentication/Registration'
@@ -9,96 +11,48 @@ import LoginForm from './components/authentication/LoginForm'
 
 
 
-function App() {
+
+const App = (props) => {
+  let FormData = require('form-data');
+
+  const [registeredUserInfo, setRegisteredUserInfo] = useState({})
+  let formdata = new FormData();
+  formdata.append("user[username]", registeredUserInfo.username);
+  formdata.append("user[password]", registeredUserInfo.password);
+
+  console.log('App - registeredUserInfo', registeredUserInfo)
+  console.log(formdata)
 
 
-  // const [loggedIn, setLoggedIn] = useState("NOT_LOGGED_IN");
-  // const [user, setUser] = useState({});
-  // const [email, setEmail] = useState("");
+  const handleSubmitFromApp = (input) => {
+    console.log('handling submit from App - registeredUserInfo', input)
+    setRegisteredUserInfo(input)
+  };
 
-  // // Handling auto-login (using token stored in localStorage)
-  // useEffect(()=>{
-  //   const token = localStorage.getItem("token")
-  //   if(token){
-  //       fetch(`http://localhost:3000/auto_login`, {
-  //           headers: {
-  //               Authorization: `Bearer ${token}`
-  //           }
-  //       })
-  //       .then(res => res.json())
-  //       .then(json => {
-  //           setUser(json)
-  //           // console.log(`auto-login:`, json)
-  //       })
-  //   }
-  // })
+  useEffect(()=>{
+    if(registeredUserInfo.username !== undefined){
+    let requestOptions = {
+      method: 'POST',
+      body: formdata,
+      redirect: 'follow'
+    };
+    
+    fetch("http://localhost:3000/users", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
 
-  // // handling Authclick
-  // const handleAuthClick = () => {
-  //   const token = localStorage.getItem("token")
-  //   fetch(`http://localhost:3000/users`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Authorization": `Bearer ${token}`
-  //     }
-  //   })
-  //   .then(res => res.json())
-  //   .then(json => console.log(json))
-  // }
+  }, [registeredUserInfo])
 
 
-  // const handleLogin = (data) => {
-  //   setLoggedIn("LOGGED_IN");
-  //   setUser(data.user);
-  // };
 
-  // useEffect(() => {
-  //   const checkLoginStatus = () => {
-  //     axios
-  //       .get(`${APIConfig}/logged_in`, { withCredentials: true })
-  //       .then((response) => {
-  //         //console.log("logged in?", response);
-  //         if (response.data.logged_in && loggedIn === "NOT_LOGGED_IN") {
-  //           setLoggedIn("LOGGED_IN");
-  //           setUser(response.data.user);
-  //           setEmail(response.data.user.email);
-  //         } else if (!response.data.logged_in && loggedIn === "LOGGED_IN") {
-  //           setLoggedIn("NOT_LOGGED_IN");
-  //           setUser({});
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.log("log in error", error);
-  //       });
-  //   };
-  //   checkLoginStatus();
-  // }, []);
-
-  // const handleLogout = () => {
-  //   setLoggedIn("NOT_LOGGED_IN");
-  //   setUser({});
-  // };
-  // //console.log(email);
-
-  // const handleLogoutClick = () => {
-  //   axios
-  //     .delete(`${APIConfig}/logout`, { withCredentials: true })
-  //     .then((response) => {
-  //       //console.log("logout", response);
-  //       handleLogout();
-  //       window.location.reload();
-  //       //props.history.push("/");
-  //     })
-  //     .catch((error) => {
-  //       console.log("Logout error", error);
-  //     });
-  // };
 
   return (
     <div className="App">
     <Switch>
-      <Route exact path='/' component={Home} />
-      <Route path='/signup'component={Registration}/>
+      <Route exact path='/' component={ Home }/>
+      <Route path='/signup'render={(props) => <Registration {...props} handleSubmitFromApp={handleSubmitFromApp}/>} />
     </Switch>
   </div>
   );
