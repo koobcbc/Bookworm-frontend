@@ -6,7 +6,7 @@ import LoginForm from '../../authentication/LoginForm'
 
 import Button from 'react-bootstrap/Button';
 
-const Home = ({ handleUserInfoFromApp }) => {
+const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
 
     const history = useHistory();
     const [loginInfo, setLoginInfo] = useState({})
@@ -37,6 +37,7 @@ const Home = ({ handleUserInfoFromApp }) => {
             console.log(result)
             if (result.status==200){
                 authorization(result.token, result.user.id)
+                // handleAuthenInfoFromApp(result.token, result.user.id)
             }
             else{
                 setLoginSuccessful(false)
@@ -58,7 +59,7 @@ const Home = ({ handleUserInfoFromApp }) => {
         };
 
         fetch(`http://localhost:3000/users/${id}`, requestOptions)
-        .then(response => response.text())
+        .then(response => response.json())
         .then(result => {
             console.log(result)
             handleUserInfoFromApp(result)
@@ -66,7 +67,6 @@ const Home = ({ handleUserInfoFromApp }) => {
         .catch(error => console.log('error', error));
         history.push("/main/mypage");
     }
-
     return(
         <>
             <h1>BOOKWORM</h1>
@@ -76,7 +76,7 @@ const Home = ({ handleUserInfoFromApp }) => {
             {loginSuccessful ? null :
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Error! </strong> Username/Password Incorrect.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div> 
