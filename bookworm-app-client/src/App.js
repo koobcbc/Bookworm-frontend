@@ -9,6 +9,7 @@ import Home from './components/routes/home/Home'
 import Registration from './components/authentication/Registration'
 import LoginForm from './components/authentication/LoginForm'
 import Footer from './components/shared/Footer'
+import Mypage from './components/routes/main/mypage/Mypage';
 
 
 const App = (props) => {
@@ -49,10 +50,11 @@ const App = (props) => {
   }, [registeredUserInfo])
   // ----------------------------------registration END ^
 
+  console.log('App - userinfo', userInfo)
 
-  // -------------HANDLING USER INFO AFTER LOGIN AUTHENTICATION----
+  // -------------HANDLING USER INFO AFTER LOGIN AUTHENTICATION FROM LOGINFORM => HOME ----
   const handleUserInfoFromApp = (info) => {
-    console.log('handle user info from app - ', info)
+    // console.log('handle user info from app - ', info)
     setUserInfo(info)
   }
 
@@ -63,6 +65,7 @@ const App = (props) => {
     <Switch>
       <Route exact path='/' render={(props) => <Home {...props} handleUserInfoFromApp={handleUserInfoFromApp} />} />
       <Route path='/signup'render={(props) => <Registration {...props} handleSubmitFromApp={handleSubmitFromApp}/>} />
+      <Route path='/main/mypage'render={(props) => <Mypage {...props} userInfo={userInfo}/>} /> 
     </Switch>
     <Footer />
   </div>
