@@ -19,6 +19,7 @@ const App = (props) => {
 
   const [registeredUserInfo, setRegisteredUserInfo] = useState({})
   const [userInfo, setUserInfo] = useState({})
+  const [authenInfo, setAuthenInfo] = useState({token:"", id:""})
 
   let RegistrationFormdata = new FormData();
   RegistrationFormdata.append("user[username]", registeredUserInfo.username);
@@ -51,11 +52,17 @@ const App = (props) => {
   // ----------------------------------registration END ^
 
   console.log('App - userinfo', userInfo)
+  console.log('App - autheninfo', authenInfo)
 
   // -------------HANDLING USER INFO AFTER LOGIN AUTHENTICATION FROM LOGINFORM => HOME ----
-  const handleUserInfoFromApp = (info) => {
+  const handleUserInfoFromApp = (input) => {
     // console.log('handle user info from app - ', info)
-    setUserInfo(info)
+    setUserInfo(input)
+  }
+
+  const handleAuthenInfoFromApp = (token, id) => {
+    // console.log('handle user info from app - ', info)
+    setAuthenInfo({token:{token}, id:{id}})
   }
 
   // -------------handling user info END ^
@@ -63,9 +70,13 @@ const App = (props) => {
   return (
     <div className="App">
     <Switch>
-      <Route exact path='/' render={(props) => <Home {...props} handleUserInfoFromApp={handleUserInfoFromApp} />} />
-      <Route path='/signup'render={(props) => <Registration {...props} handleSubmitFromApp={handleSubmitFromApp}/>} />
-      <Route path='/main/mypage'render={(props) => <Mypage {...props} userInfo={userInfo}/>} /> 
+      <Route exact path='/' render={(props) => <Home {...props} 
+                              handleUserInfoFromApp={handleUserInfoFromApp} 
+                              handleAuthenInfoFromApp={handleAuthenInfoFromApp}/>} />
+      <Route path='/signup'render={(props) => <Registration {...props} 
+                              handleSubmitFromApp={handleSubmitFromApp}/>} />
+      <Route path='/main/mypage'render={(props) => <Mypage {...props} 
+                              userInfo={userInfo}/>} /> 
     </Switch>
     <Footer />
   </div>
