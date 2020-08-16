@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import logo from '../../../bookworm_logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import LoginForm from '../../authentication/LoginForm'
 
@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 const Home = ({ handleUserInfoFromApp }) => {
 
+    const history = useHistory();
     const [loginInfo, setLoginInfo] = useState({})
     const [loginSuccessful, setLoginSuccessful] = useState(true)
 
@@ -17,30 +18,11 @@ const Home = ({ handleUserInfoFromApp }) => {
         setLoginInfo(input)
     }
 
-        // authorization function (after login) --> GET user info using id and pass it to the App
-    const authorization = (token, id) => {
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-
-        var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-        };
-
-        fetch(`http://localhost:3000/users/${id}`, requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            console.log(result)
-            handleUserInfoFromApp(result)
-        })
-        .catch(error => console.log('error', error));
-    }
-
     let LoginFormdata = new FormData();
     LoginFormdata.append("user[username]", loginInfo.username);
     LoginFormdata.append("user[password]", loginInfo.password);
 
+    //login function after submission
     useEffect(()=>{
         if(loginInfo.username !== undefined){
         let requestOptions = {
@@ -61,9 +43,29 @@ const Home = ({ handleUserInfoFromApp }) => {
             }
         })
         .catch(error => console.log('error', error));
-        // history.push("/");
         }
     }, [loginInfo])
+
+    // authorization function (after login) --> GET user info using id and pass it to the App
+    const authorization = (token, id) => {
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${token}`);
+
+        var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+        };
+
+        fetch(`http://localhost:3000/users/${id}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            console.log(result)
+            handleUserInfoFromApp(result)
+        })
+        .catch(error => console.log('error', error));
+        history.push("/main/mypage");
+    }
 
     return(
         <>
@@ -73,7 +75,7 @@ const Home = ({ handleUserInfoFromApp }) => {
             <Link to="/signup"><Button>Sign Up</Button></Link>
             {loginSuccessful ? null :
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Error! </strong> Password Not Matching.
+                <strong>Error! </strong> Username/Password Incorrect.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

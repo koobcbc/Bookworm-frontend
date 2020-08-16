@@ -13,7 +13,7 @@ const Nav = () => {
                     <NavLink to='/'>Log Out</NavLink>
                 </nav>
             </div>
-            <div className="small-screen">
+            <div className="large-screen">
                 <NavLink to='/mypage'>My Page</NavLink>
                 <NavLink to='/'>Log Out</NavLink>
                 <nav>
