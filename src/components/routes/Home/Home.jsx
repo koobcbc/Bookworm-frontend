@@ -52,7 +52,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);
 
-        var requestOptions = {
+        let requestOptions = {
         method: 'GET',
         headers: myHeaders,
         redirect: 'follow'
@@ -67,6 +67,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
         .catch(error => console.log('error', error));
         history.push("/main/mypage");
     }
+
     return(
         <>
             <h1>BOOKWORM</h1>

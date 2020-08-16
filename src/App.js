@@ -10,6 +10,8 @@ import Registration from './components/authentication/Registration'
 import LoginForm from './components/authentication/LoginForm'
 import Footer from './components/shared/Footer'
 import Mypage from './components/routes/main/mypage/Mypage';
+import BookInfo from './components/routes/main/search/BookInfo'
+import SearchBooks from './components/routes/main/search/SearchBooks';
 
 
 const App = (props) => {
@@ -67,16 +69,28 @@ const App = (props) => {
 
   // -------------handling user info END ^
 
+  // SEARCHED BOOKS INFO PASSED FROM SearchBooks.jsx through this function
+  const [keyword, setKeyword] = useState({})
+  const handleSubmitFromAppSearchingKeyword = (input) => {
+    // console.log('App-handlesubmit keyword', input)
+    setKeyword(input)
+  }
+
   return (
     <div className="App">
     <Switch>
       <Route exact path='/' render={(props) => <Home {...props} 
                               handleUserInfoFromApp={handleUserInfoFromApp} 
                               handleAuthenInfoFromApp={handleAuthenInfoFromApp}/>} />
-      <Route path='/signup'render={(props) => <Registration {...props} 
+      <Route path='/signup' render={(props) => <Registration {...props} 
                               handleSubmitFromApp={handleSubmitFromApp}/>} />
-      <Route path='/main/mypage'render={(props) => <Mypage {...props} 
+      <Route path='/main/mypage' render={(props) => <Mypage {...props} 
                               userInfo={userInfo}/>} /> 
+      <Route path='/main/search' render={(props) => <SearchBooks {...props} 
+                              handleSubmitFromAppSearchingKeyword={handleSubmitFromAppSearchingKeyword}
+                              keyword={keyword}/>} /> 
+      <Route path='/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
+                              handleSubmitFromApp={handleSubmitFromApp}/>} />
     </Switch>
     <Footer />
   </div>
