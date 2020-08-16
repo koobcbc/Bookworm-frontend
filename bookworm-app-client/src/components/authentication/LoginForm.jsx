@@ -18,6 +18,7 @@ const LoginForm = ({ handleSubmitForLoginFromHome }) => {
     };
 
     const handleSubmit = (e) => {
+        // makes all the form input fields
         document.getElementById("login_form").reset();
         console.log('handling Submit' - userInfo) 
         e.preventDefault()
@@ -28,7 +29,7 @@ const LoginForm = ({ handleSubmitForLoginFromHome }) => {
 
     return (
             <Form onSubmit={handleSubmit} id="login_form">
-              <Form.Group controlId="formBasicUsername">
+              <Form controlId="formBasicUsername">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="username"
@@ -38,9 +39,9 @@ const LoginForm = ({ handleSubmitForLoginFromHome }) => {
                   onChange={handleChange}
                   required
                 />
-              </Form.Group>
+              </Form>
         
-              <Form.Group controlId="formBasicPassword">
+              <Form controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
@@ -50,7 +51,7 @@ const LoginForm = ({ handleSubmitForLoginFromHome }) => {
                   onChange={handleChange}
                   required
                 />
-              </Form.Group>
+              </Form>
         
               <Button variant="primary" type="submit">
                 Login
