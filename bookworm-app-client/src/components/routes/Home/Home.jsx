@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import logo from '../../../bookworm_logo.png'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import textlogo from '../../../bookend_logo_text.png';
+import logo from '../../../bookend_logo.png';
+
+import { Link, useHistory } from 'react-router-dom';
+import apiUrl from '../../../components/ApiConfig';
+import Button from 'react-bootstrap/Button';
 
 import LoginForm from '../../authentication/LoginForm'
 
-import Button from 'react-bootstrap/Button';
+
 
 const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
 
@@ -31,7 +35,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
         redirect: 'follow'
         };
         
-        fetch("http://localhost:3000/users/login", requestOptions)
+        fetch(`${apiUrl}/users/login`, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result)
@@ -58,7 +62,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
         redirect: 'follow'
         };
 
-        fetch(`http://localhost:3000/users/${id}`, requestOptions)
+        fetch(`${apiUrl}/users/${id}`, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result)
@@ -70,10 +74,15 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
 
     return(
         <>
-            <h1>BOOKWORM</h1>
-            <img src={logo} width="200px"/>
+            <nav class="navbar navbar-light bg-light">
+                <img src={logo} display="inline-block" width="1px"/>
+                <Link to="/" class="navbar-brand login-brand">Bookend</Link>
+                <Link to="/signup"><button type="button" class="btn btn-outline-secondary">Sign Up</button></Link>
+            </nav>
+            <br/>
+            <img src={textlogo} display="inline-block" width="500px"/>
+            <br/>
             <LoginForm handleSubmitForLoginFromHome={handleSubmitForLoginFromHome}/>
-            <Link to="/signup"><Button>Sign Up</Button></Link>
             {loginSuccessful ? null :
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>Error! </strong> Username/Password Incorrect.

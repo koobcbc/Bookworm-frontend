@@ -29,33 +29,34 @@ const LoginForm = ({ handleSubmitForLoginFromHome }) => {
 
     return (
             <Form onSubmit={handleSubmit} id="login_form">
-              <Form controlId="formBasicUsername">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="username"
-                  placeholder="Username"
-                  value={userInfo.username}
-                  name="username"
-                  onChange={handleChange}
-                  required
-                />
-              </Form>
+                <Form controlId="formBasicUsername">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                    type="username"
+                    placeholder="Username"
+                    value={userInfo.username}
+                    name="username"
+                    onChange={handleChange}
+                    required
+                    />
+                </Form>
         
-              <Form controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={userInfo.password}
-                  name="password"
-                  onChange={handleChange}
-                  required
-                />
-              </Form>
+                <Form controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    value={userInfo.password}
+                    name="password"
+                    onChange={handleChange}
+                    required
+                    />
+                </Form>
         
-              <Button variant="primary" type="submit">
-                Login
-              </Button>
+                <br/>
+                <Button variant="secondary" type="submit">
+                    Login
+                </Button>
             </Form>
             
     );

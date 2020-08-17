@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import SearchResult from './SearchResult';
+import Nav from '../../../shared/Nav';
 
 
 const SearchBooks = ({ handleSubmitFromAppSearchingKeyword, keyword }) => {
 
-    // const [isbn, setIsbn] = useState("")
-    // const [title, setTitle] = useState("")
-    // const [author, setAuthor] = useState("")
+
     const [input, setInput] = useState({isbn:"",title:"",author:""})
 
     const handleChange = (event) => {
@@ -28,33 +27,41 @@ const SearchBooks = ({ handleSubmitFromAppSearchingKeyword, keyword }) => {
 
     return(
         <>
-        <div>
+        <Nav />
+        <div className="search_div">
             <h3>Search a Book Using the Keyword(s)</h3>
             <Form onSubmit={handleSubmit} id="search_book_form">
-                <Form.Label>ISBN</Form.Label>
-                <Form.Control
-                    type="isbn"
-                    placeholder="ISBN"
-                    value={input.isbn}
-                    name="isbn"
-                    onChange={handleChange}
-                />
-                <Form.Label>Title</Form.Label>
-                <Form.Control
-                    type="title"
-                    placeholder="Title"
-                    value={input.title}
-                    name="title"
-                    onChange={handleChange}
-                />
-                <Form.Label>Author</Form.Label>
-                <Form.Control
-                    type="author"
-                    placeholder="Author"
-                    value={input.author}
-                    name="author"
-                    onChange={handleChange}
-                />
+                <div className="individual_search_form">
+                    <Form.Label className="isbn_label">ISBN</Form.Label>
+                    <Form.Control
+                        type="isbn"
+                        placeholder="ISBN"
+                        value={input.isbn}
+                        name="isbn"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="individual_search_form">
+                    <Form.Label className="title_label">Title</Form.Label>
+                    <Form.Control
+                        type="title"
+                        placeholder="Title"
+                        value={input.title}
+                        name="title"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="individual_search_form">
+                    <Form.Label className="author_label">Author</Form.Label>
+                    <Form.Control
+                        type="author"
+                        placeholder="Author"
+                        value={input.author}
+                        name="author"
+                        onChange={handleChange}
+                    />
+                </div>
+                <br/>
             <Button type="submit">Search</Button>
             </Form>
         </div>

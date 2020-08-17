@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router";
 
 import Nav from '../../../shared/Nav';
+import { Link } from 'react-router-dom';
 
 const BookInfo = () => {
     let { isbn } = useParams();
@@ -21,6 +22,7 @@ const BookInfo = () => {
     },[])
 
     console.log('bookinfo- ',bookInfo)
+    
     return(
         <>
         <Nav />
@@ -42,6 +44,7 @@ const BookInfo = () => {
 
             </>
         : <p>Loading...</p>}
+        <Link to="/main/mypage"><p>Back to My Page</p></Link>
         </>
     )
 

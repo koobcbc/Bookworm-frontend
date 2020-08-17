@@ -1,38 +1,128 @@
 .App {
   text-align: center;
+  /* background-color: #8bafc4; */
+
 }
 
-  /* nav */
-.small-screen {
-  display: block;
+  /* search book */
+
+.search_div {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
 }
 
-.large-screen {
-  display: none;
+#search_book_form {
+  width: 85vw;
+  max-width: 500px;
+  margin: 20px;
+  align-self: center;
+
+}
+
+.individual_search_form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* .individual_search_form label {
+  margin-right: 20px;
+} */
+
+.isbn_label {
+  margin-right: 30px;
+}
+
+.title_label {
+  margin-right: 34px;
+}
+
+.author_label {
+  margin-right: 17px;
+}
+
+.individual_search_form input {
+  width: 66vw;
+  max-width: 430px;
+}
+
+.login-brand {
+  justify-self: center;
 }
 
   /* my page */
 
 
 
+  /* search result */
+
+.search_result_div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(1fr, 7);
+  grid-gap: 10px;
+  margin: 15px;
+}
+
+.search_result_individual_div {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+  /* footer */
+
+.footerDiv{
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 20px;
+}
+
+.footer{
+  font-size: 10px;
+  text-align: left;
+  padding-left: 20px;
+}
+
 /* DESKTOP */
 @media only screen and (min-width:1000px) {
-  .small-screen {
-    display: none;
-  }
   
-  .large-screen {
-    display: block;
+  .search_result_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 30px;
   }
+
+  .search_result_individual_div {
+    padding: 20px;
+  }
+
+  .navbar-brand {
+    padding-left: 30px;
+  }
+
 }
 
 /* TABLET */
 @media only screen and (min-width:754px) {
-  .small-screen {
-    display: none;
-  }
   
-  .large-screen {
-    display: block;
+
+  .search_result_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 30px;
   }
+
+  .search_result_individual_div {
+    padding: 20px;
+  }
+
+  .navbar-brand {
+    padding-left: 30px;
+  }
+
 }
+

@@ -12,6 +12,7 @@ import Footer from './components/shared/Footer'
 import Mypage from './components/routes/main/mypage/Mypage';
 import BookInfo from './components/routes/main/search/BookInfo'
 import SearchBooks from './components/routes/main/search/SearchBooks';
+import About from './components/routes/main/About'
 
 
 const App = (props) => {
@@ -91,6 +92,7 @@ const App = (props) => {
                               keyword={keyword}/>} /> 
       <Route path='/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
                               handleSubmitFromApp={handleSubmitFromApp}/>} />
+      <Route path='/about' component={About}/>
     </Switch>
     <Footer />
   </div>
