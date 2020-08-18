@@ -3,10 +3,18 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import apiUrl from '../ApiConfig'
 import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom';
+import logo from '../../bookend_logo.png';
+import textlogo from '../../bookend_logo_text.png';
+import titlelogo from '../../bookend-logo-title.png'
+
+
 
 
 const Registration = ({ handleSubmitFromApp }) => {
   
+    const history = useHistory();
+
     const [passwordMatch, setPasswordMatch] = useState(true)
 
     const [userInfo, setUserInfo] = useState({
@@ -30,6 +38,7 @@ const Registration = ({ handleSubmitFromApp }) => {
         if (userInfo.password === userInfo.password_confirmation){
             handleSubmitFromApp(userInfo)
             setUserInfo({})
+            history.push("/");
         }
         else {
             console.log('password matching', passwordMatch)
@@ -42,12 +51,22 @@ const Registration = ({ handleSubmitFromApp }) => {
 
     return (
         <>
+            <nav class="navbar navbar-light bg-light">
+                <img src={titlelogo} display="inline-block" height="45px"/>
+                <Link to="/" class="navbar-brand login-brand"></Link>
+                <Link to="/"><button type="button" class="btn btn-outline-secondary">Back to Log In</button></Link>
+            </nav>
+            <br/>
+            <img src={textlogo} display="inline-block" width="500px"/>
+            <br/>
+            <h3>Get Started With Bookend</h3>
+            <p>Sign up to discover cool features of Bookend</p>
             <Form onSubmit={handleSubmit} id="registration_form">
                 <Form.Group controlId="formBasicUsername">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Username / Email</Form.Label>
                     <Form.Control
                     type="username"
-                    placeholder="Username"
+                    placeholder="Username / Email"
                     value={userInfo.username}
                     name="username"
                     onChange={handleChange}
@@ -86,9 +105,9 @@ const Registration = ({ handleSubmitFromApp }) => {
                     Register
                 </Button>
             </Form>
-
+            <br/>
             {passwordMatch ? null :
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-box">
                 <strong>Error! </strong> Password Not Matching.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

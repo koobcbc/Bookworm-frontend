@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp build/index.html build/200.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,7 +45,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "surge --project ./ --domain bookworm-app.surge.sh"
+      "pre-push": "surge --project ./ --domain bookend-app.surge.sh"
     }
   }
 }

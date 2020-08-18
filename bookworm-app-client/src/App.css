@@ -1,7 +1,11 @@
 .App {
   text-align: center;
-  /* background-color: #8bafc4; */
+  position: relative;
+  min-height: 100vh;  
+}
 
+#content-wrap {
+  padding-bottom: 2.5rem;
 }
 
   /* search book */
@@ -26,10 +30,6 @@
   width: 100%;
 }
 
-/* .individual_search_form label {
-  margin-right: 20px;
-} */
-
 .isbn_label {
   margin-right: 30px;
 }
@@ -49,6 +49,25 @@
 
 .login-brand {
   justify-self: center;
+}
+
+  /* registration */
+
+
+#registration_form{
+  width: 85vw;
+  max-width: 500px;
+  margin: auto;
+}
+  /* login form */
+#login_form{
+  width: 85vw;
+  max-width: 500px;
+  margin: auto;
+}
+
+#alert-box {
+  max-width: 500px;
 }
 
   /* my page */
@@ -74,12 +93,15 @@
 
 .footerDiv{
   position: absolute;
+  left:0;
   bottom: 0;
   width: 100vw;
-  height: 20px;
+  height: 30px; 
 }
 
 .footer{
+  position: relative;
+  top: 10px;
   font-size: 10px;
   text-align: left;
   padding-left: 20px;

@@ -30,10 +30,10 @@ const LoginForm = ({ handleSubmitForLoginFromHome }) => {
     return (
             <Form onSubmit={handleSubmit} id="login_form">
                 <Form controlId="formBasicUsername">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Username / Email</Form.Label>
                     <Form.Control
                     type="username"
-                    placeholder="Username"
+                    placeholder="Username / Email"
                     value={userInfo.username}
                     name="username"
                     onChange={handleChange}

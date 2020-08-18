@@ -13,6 +13,8 @@ import Mypage from './components/routes/main/mypage/Mypage';
 import BookInfo from './components/routes/main/search/BookInfo'
 import SearchBooks from './components/routes/main/search/SearchBooks';
 import About from './components/routes/main/About'
+import AddProfile from './components/routes/main/mypage/AddProfile';
+import Main from './components/routes/main/Main';
 
 
 const App = (props) => {
@@ -52,12 +54,12 @@ const App = (props) => {
       history.push("/");
     }
   }, [registeredUserInfo])
-  // ----------------------------------registration END ^
+  // ----------END-----------------registration END ^
 
   console.log('App - userinfo', userInfo)
   console.log('App - autheninfo', authenInfo)
 
-  // -------------HANDLING USER INFO AFTER LOGIN AUTHENTICATION FROM LOGINFORM => HOME ----
+  // HANDLING USER INFO AFTER LOGIN AUTHENTICATION FROM LOGINFORM => HOME ----
   const handleUserInfoFromApp = (input) => {
     // console.log('handle user info from app - ', info)
     setUserInfo(input)
@@ -68,7 +70,7 @@ const App = (props) => {
     setAuthenInfo({token:{token}, id:{id}})
   }
 
-  // -------------handling user info END ^
+  // --------END-----handling user info END ^
 
   // SEARCHED BOOKS INFO PASSED FROM SearchBooks.jsx through this function
   const [keyword, setKeyword] = useState({})
@@ -77,23 +79,53 @@ const App = (props) => {
     setKeyword(input)
   }
 
+  // HANDLING USER PROFILE (passing up from AddProfile) --------------------
+  const [userProfile, setUserProfile] = useState({})
+  const handleSubmitForSetProfileFromApp = (input) => {
+    setUserProfile(input)
+  }
+
+  const [updatedProfile, setUpdatedProfile] = useState({})
+    // UPDATING USER PROFILE
+  const updateUserProfileFromApp = (input) => {
+    setUpdatedProfile(input)
+  }
+  // 
+
+
   return (
     <div className="App">
-    <Switch>
-      <Route exact path='/' render={(props) => <Home {...props} 
-                              handleUserInfoFromApp={handleUserInfoFromApp} 
-                              handleAuthenInfoFromApp={handleAuthenInfoFromApp}/>} />
-      <Route path='/signup' render={(props) => <Registration {...props} 
-                              handleSubmitFromApp={handleSubmitFromApp}/>} />
-      <Route path='/main/mypage' render={(props) => <Mypage {...props} 
-                              userInfo={userInfo}/>} /> 
-      <Route path='/main/search' render={(props) => <SearchBooks {...props} 
-                              handleSubmitFromAppSearchingKeyword={handleSubmitFromAppSearchingKeyword}
-                              keyword={keyword}/>} /> 
-      <Route path='/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
-                              handleSubmitFromApp={handleSubmitFromApp}/>} />
-      <Route path='/about' component={About}/>
-    </Switch>
+      <div id="content-wrap">
+        <Switch>
+          <Route exact path='/' render={(props) => <Home {...props} 
+                                  handleUserInfoFromApp={handleUserInfoFromApp} 
+                                  handleAuthenInfoFromApp={handleAuthenInfoFromApp}/>} />
+          <Route path='/signup' render={(props) => <Registration {...props} 
+                                  handleSubmitFromApp={handleSubmitFromApp}/>} />
+          <Route path='/main' render={(props) => <Main {...props} 
+                                  userProfile={userProfile}
+                                  userInfo={userInfo}
+                                  handleSubmitFromAppSearchingKeyword={handleSubmitFromAppSearchingKeyword}
+                                  handleSubmitForSetProfileFromApp={handleSubmitForSetProfileFromApp}
+                                  keyword={keyword}
+                                  handleSubmitFromApp={handleSubmitFromApp}
+                                  updateUserProfileFromApp={updateUserProfileFromApp}
+                                  updatedProfile={updatedProfile}
+                                  authenInfo={authenInfo}
+                                  handleUserInfoFromApp={handleUserInfoFromApp}
+                                  />} />
+          {/* <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
+                                  handleSubmitForLoginFromApp={handleSubmitForLoginFromApp}/>} />  
+          <Route path='/main/mypage' render={(props) => <Mypage {...props} 
+                                  userInfo={userInfo}/>} />                                                
+          <Route path='/main/search' render={(props) => <SearchBooks {...props} 
+                                  handleSubmitFromAppSearchingKeyword={handleSubmitFromAppSearchingKeyword}
+                                  keyword={keyword}/>} /> 
+          <Route path='/main/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
+                                  handleSubmitFromApp={handleSubmitFromApp}/>} /> */}
+          <Route path='/about' component={About}/>
+        </Switch>
+      </div>
     <Footer />
   </div>
   );

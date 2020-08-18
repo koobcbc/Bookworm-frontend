@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import textlogo from '../../../bookend_logo_text.png';
 import logo from '../../../bookend_logo.png';
+import titlelogo from '../../../bookend-logo-title.png'
+
 
 import { Link, useHistory } from 'react-router-dom';
 import apiUrl from '../../../components/ApiConfig';
@@ -75,16 +77,18 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
     return(
         <>
             <nav class="navbar navbar-light bg-light">
-                <img src={logo} display="inline-block" width="1px"/>
-                <Link to="/" class="navbar-brand login-brand">Bookend</Link>
+                <img src={titlelogo} display="inline-block" height="45px"/>
+                <Link to="/" class="navbar-brand login-brand"></Link>
                 <Link to="/signup"><button type="button" class="btn btn-outline-secondary">Sign Up</button></Link>
             </nav>
+
             <br/>
             <img src={textlogo} display="inline-block" width="500px"/>
             <br/>
             <LoginForm handleSubmitForLoginFromHome={handleSubmitForLoginFromHome}/>
+            <br/>
             {loginSuccessful ? null :
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-box">
                 <strong>Error! </strong> Username/Password Incorrect.
                 <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
