@@ -5,6 +5,8 @@ import Nav from '../../../shared/Nav';
 import { Link, useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 
+import apiUrl from '../../../ApiConfig'
+
 const BookInfo = ({ handleClickPassIsbnToApp, selectedBookisbn, userInfo, fetchUpdatedUserInfo, authenInfo }) => {
     let { isbn } = useParams();
     console.log(isbn)
@@ -43,7 +45,7 @@ const BookInfo = ({ handleClickPassIsbnToApp, selectedBookisbn, userInfo, fetchU
             redirect: 'follow'
         };
 
-        fetch(`http://localhost:3000/users/${userInfo.id}/books`, newBookRequestOptions)
+        fetch(`${apiUrl}/users/${userInfo.id}/books`, newBookRequestOptions)
             .then(response => response.text())
             .then(result => {console.log(result)
                             if(selectedBookisbn.title!==""){

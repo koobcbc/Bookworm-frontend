@@ -47,7 +47,7 @@ const App = (props) => {
       redirect: 'follow'
     };
     
-    fetch("http://localhost:3000/users", requestOptions)
+    fetch(`${apiUrl}/users`, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
@@ -139,15 +139,6 @@ const App = (props) => {
                                   selectedBookisbn={selectedBookisbn}
                                   setSelectedBookisbn={setSelectedBookisbn}
                                   />} />
-          {/* <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
-                                  handleSubmitForLoginFromApp={handleSubmitForLoginFromApp}/>} />  
-          <Route path='/main/mypage' render={(props) => <Mypage {...props} 
-                                  userInfo={userInfo}/>} />                                                
-          <Route path='/main/search' render={(props) => <SearchBooks {...props} 
-                                  handleSubmitFromAppSearchingKeyword={handleSubmitFromAppSearchingKeyword}
-                                  keyword={keyword}/>} /> 
-          <Route path='/main/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
-                                  handleSubmitFromApp={handleSubmitFromApp}/>} /> */}
           <Route path='/about' component={About}/>
         </Switch>
       </div>
