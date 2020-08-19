@@ -45,13 +45,20 @@ const BookInfo = ({ handleClickPassIsbnToApp, selectedBookisbn, userInfo, fetchU
 
         fetch(`http://localhost:3000/users/${userInfo.id}/books`, newBookRequestOptions)
             .then(response => response.text())
-            .then(result => {console.log(result)})
-            .catch(error => {console.log('error', error)
-                            if(!error) {
+            .then(result => {console.log(result)
+                            if(selectedBookisbn.title!==""){
                             fetchUpdatedUserInfo(authenInfo.token.token, authenInfo.id.id)
-                            setBookAddedStatus(true)}});
+                            
+                            }
+                        })
+            .catch(error => {console.log('error', error)});
             history.push(`/main/mypage/book/${isbn}`)
+            
         },[selectedBookisbn])
+
+        // function refreshMyPage() {
+        //     window.location.href = '/main/mypage';         
+        // }
                                                    
     return(
         <>
@@ -79,7 +86,7 @@ const BookInfo = ({ handleClickPassIsbnToApp, selectedBookisbn, userInfo, fetchU
             <Button onClick={() => handleClickPassIsbnToApp(isbn, bookInfo.volumeInfo.title, bookInfo.volumeInfo.imageLinks.thumbnail)}>Add to Read List</Button>
             <br/>
             <br/>
-            {bookAddedStatus ? 
+            {selectedBookisbn.title!=="" ? 
             <div class="alert alert-primary" role="alert">
                 Book Added!
             </div> : null}

@@ -28,7 +28,8 @@ const Main = ({ userProfile,
                 handleSubmitForUpdatedProfileFromApp,
                 submittedUpdatedProfile,
                 handleClickPassIsbnToApp,
-                selectedBookisbn
+                selectedBookisbn,
+                setSelectedBookisbn
 }) => {
 
     // const [updatedUser, setUpdatedUser] = useState({})
@@ -120,6 +121,9 @@ const Main = ({ userProfile,
             .then(result => {
                 console.log(result)
                 handleUserInfoFromApp(result)
+                setSelectedBookisbn({isbn:"",
+                title:"",
+                image_url:""})
             })
             .catch(error => console.log('error', error));
             history.push("/main/mypage");

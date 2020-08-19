@@ -137,6 +137,7 @@ const App = (props) => {
                                   handleSubmitForUpdatedProfileFromApp={handleSubmitForUpdatedProfileFromApp}
                                   handleClickPassIsbnToApp={handleClickPassIsbnToApp}
                                   selectedBookisbn={selectedBookisbn}
+                                  setSelectedBookisbn={setSelectedBookisbn}
                                   />} />
           {/* <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
                                   handleSubmitForLoginFromApp={handleSubmitForLoginFromApp}/>} />  

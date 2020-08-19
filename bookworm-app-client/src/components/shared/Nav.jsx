@@ -1,11 +1,17 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import titlelogo from '../../bookend-logo-title.png'
 
 import logo from '../../bookworm_logo.png';
 
 
 const Nav = () => {
+    const history = useHistory();
+
+    function refreshPage() {
+        localStorage.clear();
+        window.location.href = '/';
+      }
 
     return(
         <>
@@ -27,7 +33,7 @@ const Nav = () => {
                             <NavLink to='/about' class="nav-link">About</NavLink>
                         </li>
                         <li class="nav-item logoutNav">
-                            <NavLink to='/' class="nav-link">Logout</NavLink>
+                            <NavLink to='/' onClick={refreshPage} class="nav-link">Logout</NavLink>
                         </li>
                     </ul>
                 </div>

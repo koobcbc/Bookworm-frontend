@@ -134,7 +134,7 @@ const Mypage = ({ userInfo, selectedBookisbn }) => {
                                 <br/>
                                 <div className="my_profile_lower_div">
                                     <p className="my_profile_book_goal">My Reading Goal: {userInfo.profile.readingGoal}</p>
-                                    <p>Number of Books I Read: {userInfo.books.filter(book=>{return book.isbn!==""}).length}</p>
+                                    <p>Number of Books I Read: {userInfo.books.filter(book=>{return book.title!==""}).length}</p>
                                 </div>
                             </div>
                             <div>
