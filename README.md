@@ -65,31 +65,31 @@ Snippet of API
   
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Create Model | E | 2hrs |  |  |
-| Create Controller | E | 2hrs |  |  |
-| Setup Server | E | .5hr| hrs | hrs |
-| Set up Connections  | E | .5hrs| hrs | hrs |
-| create Seed File  | M | 2hrs | hrs | hrs |
-| Research for Seed Data | E | 3hrs| hrs | hrs |
-| Deployment  | H | 1hr| hrs | hrs |
+| Create Model | E | 2hrs | 2hrs | 2hrs |
+| Create Controller | E | 2hrs | 5hrs | 5hrs |
+| Setup Server | E | .5hr| .5hrs | .5hrs |
+| Set up Connections  | E | .5hrs| 2hrs | 2hrs |
+| create Seed File  | M | 2hrs | 2hrs | 2hrs |
+| Research for Seed Data | E | 3hrs| 2hrs | 2hrs |
+| Deployment  | H | 1hr| 4hrs | 4hrs |
 | Total | H | 10hrs | hrs | hrs |
 
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Create react app and components| H | .5hr|  |  |
-| Install packages and Set up React Routing | H | .5hr|  |  |
-| Create User Authentication | H | 4hrs |  |  |
-| Make APIcall from App | H | .5hr|  |  |
-| Set up the layout components (Header, NavBar, Footer) | H | .5hr |  |  |
-| Searchbox for Books | H | 5hrs | | |
-| Displaying information on Searched Book | H | 3hrs | | |
+| Create react app and components| H | .5hr| .5hr | .5hr |
+| Install packages and Set up React Routing | H | .5hr| .5hr | .5hr |
+| Create User Authentication | H | 4hrs | 8hrs | 8hrs |
+| Make APIcall from App | H | .5hr| 1hr |1hr  |
+| Set up the layout components (Header, NavBar, Footer) | H | .5hr | 1hr | 1hr |
+| Searchbox for Books | H | 5hrs |5hrs |5hrs |
+| Displaying information on Searched Book | H | 3hrs | 4hrs|4hrs |
 | ReviewForm component | H | 4hrs |  |  |
-| Functionality of order form | H | 2hr|  |  |
+| Functionality of adding reviews, notes, starts | H | 2hr|  |  |
 | MyPage component + My Bookcase| H | 8hr|  |  |
 | make delete / filter functionality in Past Reviews | H | 2hrs|  |  |
 | Favorite Quotes component | H | 1.5hr | | |
-| Basic Styling for nav, footer, about page | H | 2hrs|  |  |
-| Basic Styling for main | H | 6hrs|  |  |
+| Basic Styling for nav, footer, about page | H | 2hrs| .5hrs | .5hrs |
+| Basic Styling for main | H | 6hrs| 4hrs | 4hrs |
 | Total | H | 39.5hrs|  |  | 
 
 #### MVP
