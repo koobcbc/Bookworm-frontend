@@ -152,6 +152,8 @@ const Mypage = ({ userInfo, selectedBookisbn }) => {
                     <br/>
                 <div className="my_books_container">
                 <h3>My Books: Books I Read</h3>
+                    <Link to='/main/search'><Button>Search for Books!</Button></Link>
+                    <br/>
                     {userInfo.books ?
                         <div className="my_books_exists">
                             <div className="my_books">

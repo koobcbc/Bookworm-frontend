@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory, Link } from 'react-router-dom'
 import titlelogo from '../../bookend-logo-title.png'
 
 import logo from '../../bookworm_logo.png';
@@ -16,7 +16,7 @@ const Nav = () => {
     return(
         <>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <img src={titlelogo} display="inline-block" height="45px" />
+                <Link to='/'><img src={titlelogo} display="inline-block" height="45px" /></Link>
                 <NavLink to="/main/mypage" class="navbar-brand"></NavLink>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

@@ -77,7 +77,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
     return(
         <>
             <nav class="navbar navbar-light bg-light">
-                <img src={titlelogo} display="inline-block" height="45px"/>
+                <Link to='/'><img src={titlelogo} display="inline-block" height="45px"/></Link>
                 <Link to="/" class="navbar-brand login-brand"></Link>
                 <Link to="/signup"><button type="button" class="btn btn-outline-secondary">Sign Up</button></Link>
             </nav>
