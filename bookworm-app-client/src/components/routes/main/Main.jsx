@@ -80,7 +80,7 @@ const Main = ({ userProfile,
     ProfileUpdateFormdata.append("profile[readingGoal]", submittedUpdatedProfile.readingGoal);
 
     useEffect(()=>{
-        if(submittedUpdatedProfile.nickname !== "" && userInfo.id!==undefined){
+        if(submittedUpdatedProfile.nickname !== "" && userInfo.id!==undefined && userInfo.profile ){
             console.log('fetching profile data from Main')
             // POSTING PROFILE DATA TO THE USER
             var requestOptionsUpdate = {
@@ -132,7 +132,12 @@ const Main = ({ userProfile,
             <Switch>
             <Route path='/main/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
                                   handleSubmitFromApp={handleSubmitFromApp}
-                                  handleClickPassIsbnToApp={handleClickPassIsbnToApp}/>} />
+                                  handleClickPassIsbnToApp={handleClickPassIsbnToApp}
+                                  selectedBookisbn={selectedBookisbn}
+                                  userInfo={userInfo}
+                                  authenInfo={authenInfo}
+                                  fetchUpdatedUserInfo={fetchUpdatedUserInfo}
+                                  />} />
             <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
                                   handleSubmitForSetProfileFromApp={handleSubmitForSetProfileFromApp}/>} />
             <Route path='/main/mypage/edit-profile' render={(props) => <EditProfile {...props} 

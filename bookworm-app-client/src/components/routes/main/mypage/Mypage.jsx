@@ -112,46 +112,32 @@ const Mypage = ({ userInfo, selectedBookisbn }) => {
 }
     console.log('selectedBookIsbn- mypage', selectedBookisbn)
 
-    const history = useHistory();
-    let FormData = require('form-data');
-
-      // Make a POST request for adding books
-    useEffect(()=>{
-        let newBookFormdata = new FormData();
-        newBookFormdata.append("book[isbn]", selectedBookisbn);
-
-    let newBookRequestOptions = {
-        method: 'POST',
-        body: newBookFormdata,
-        redirect: 'follow'
-    };
-
-    fetch(`http://localhost:3000/users/${userInfo.id}/books`, newBookRequestOptions)
-        .then(response => response.text())
-        .then(result => {console.log(result)})
-        .catch(error => console.log('error', error));
-        history.push('/main/mypage')
-        },[selectedBookisbn])
 
     return (
         <>
             <Nav />
             <div className="my_page_container">
                 <div className="my_profile_container">
+                    <h2>Your Profile</h2>
+                    <br/>
                     {userInfo.profile ?
                         <div className="my_page_userInfo_exists">
                             <div className="my_profile">
                                 <div className="my_profile_upper_div">
-                                    <img className="my_profile_pic" src={userInfo.profile.profilePicture} alt="My profile picture" width="50px" />
-                                    <p className="my_profile_nickname">{userInfo.profile.nickname}</p>
-                                    <p className="my_profile_description">{userInfo.profile.description}</p>
+                                    <img className="my_profile_pic" src={userInfo.profile.profilePicture} alt="My profile picture" width="200px" />
+                                    <div className="profile_box">
+                                        <p className="my_profile_nickname">{userInfo.profile.nickname}</p>
+                                        <p className="my_profile_description">{userInfo.profile.description}</p>
+                                    </div>
                                 </div>
+                                <br/>
+                                <br/>
                                 <div className="my_profile_lower_div">
-                                    <p>Number of Books I Read: {userInfo.books.length}</p>
+                                    <p className="my_profile_book_goal">My Reading Goal: {userInfo.profile.readingGoal}</p>
+                                    <p>Number of Books I Read: {userInfo.books.filter(book=>{return book.isbn!==""}).length}</p>
                                 </div>
                             </div>
                             <div>
-                                <p>No profile yet</p>
                                 <Link to='/main/mypage/edit-profile'><Button>Edit Your Profile Here</Button></Link>
                             </div>
                         </div> 
@@ -162,14 +148,15 @@ const Mypage = ({ userInfo, selectedBookisbn }) => {
                         </div>
                     }
                 </div>
-
+                    <br/>
+                    <br/>
                 <div className="my_books_container">
+                <h3>My Books: Books I Read</h3>
                     {userInfo.books ?
                         <div className="my_books_exists">
                             <div className="my_books">
-                                <h3>My Books</h3>
+                                
                                 <div className="my_books_read">
-                                    <h4>Books I Read</h4>
                                     {userInfo.books.map((book, index)=>(
                                         <Link to={"/main/mypage/book/"+book.isbn} ><img src={book.image_url} alt={book.title} height="140px"/></Link>
                                     ))}

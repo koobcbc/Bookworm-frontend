@@ -2,6 +2,7 @@
   text-align: center;
   position: relative;
   min-height: 100vh;  
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 #content-wrap {
@@ -71,9 +72,48 @@
 }
 
   /* my page */
+.my_profile_container{
+  border: 1px solid black;
+  width: 500px;
+  margin: auto;
+  padding: 30px;
+}
 
+.my_profile_upper_div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-template-columns: 0.6fr 1fr;
+  width: 430px;
+  padding: 30px;
+  margin: auto;
+  border: 1px solid black;
+}
 
+.my_books_container{
+  border: 1px solid black;
+  width: 500px;
+  padding: 30px;
+  margin: auto;
+}
 
+.book_info{
+  border: 1px solid black;
+  width: 500px;
+  padding: 30px;
+  margin: auto;
+}
+
+.alert{
+  width: 500px;
+  margin: auto;
+}
+
+.about {
+  width: 500px;
+  margin: auto;
+  
+}
   /* search result */
 
 .search_result_div {

@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
     //deployed api url
-  production: 'https://bookworm-backend-api.herokuapp.com/',
+  production: 'https://bookworm-backend-api.herokuapp.com',
   development: 'http://localhost:3000'
 }
 

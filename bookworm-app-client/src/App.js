@@ -103,11 +103,13 @@ const App = (props) => {
 
 
   // add book to my books
-  const [selectedBookisbn, setSelectedBookisbn] = useState("")
+  const [selectedBookisbn, setSelectedBookisbn] = useState({isbn:"",
+                                                            title:"",
+                                                            image_url:""})
 
-  const handleClickPassIsbnToApp = (isbn) => {
-    console.log('handleclickpassisbntoapp', isbn)
-    setSelectedBookisbn(isbn)
+  const handleClickPassIsbnToApp = (isbn, title, image_url) => {
+    console.log('handleclickpassisbntoapp', isbn, title, image_url)
+    setSelectedBookisbn({isbn:isbn, title:title, image_url:image_url})
   }
 
 
