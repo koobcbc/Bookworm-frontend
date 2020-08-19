@@ -40,10 +40,10 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
         fetch(`${apiUrl}/users/login`, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
+            console.log('FETCH (post) (login) from home', result)
             if (result.status==200){
                 authorization(result.token, result.user.id)
-                // handleAuthenInfoFromApp(result.token, result.user.id)
+                handleAuthenInfoFromApp(result.token, result.user.id)
             }
             else{
                 setLoginSuccessful(false)
@@ -67,7 +67,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
         fetch(`${apiUrl}/users/${id}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
+            console.log('FETCH (get) (authorization) from home', result)
             handleUserInfoFromApp(result)
         })
         .catch(error => console.log('error', error));

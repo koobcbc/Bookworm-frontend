@@ -30,8 +30,8 @@ const App = (props) => {
   RegistrationFormdata.append("user[username]", registeredUserInfo.username);
   RegistrationFormdata.append("user[password]", registeredUserInfo.password);
 
-  console.log('App - registeredUserInfo', registeredUserInfo)
-  console.log(RegistrationFormdata)
+  // console.log('App - registeredUserInfo', registeredUserInfo)
+  // console.log(RegistrationFormdata)
 
   // FOR REGISTRATION-----------------------VV
   const handleSubmitFromApp = (input) => {
@@ -56,8 +56,7 @@ const App = (props) => {
   }, [registeredUserInfo])
   // ----------END-----------------registration END ^
 
-  console.log('App - userinfo', userInfo)
-  console.log('App - autheninfo', authenInfo)
+ 
 
   // HANDLING USER INFO AFTER LOGIN AUTHENTICATION FROM LOGINFORM => HOME ----
   const handleUserInfoFromApp = (input) => {
@@ -79,18 +78,28 @@ const App = (props) => {
     setKeyword(input)
   }
 
-  // HANDLING USER PROFILE (passing up from AddProfile) --------------------
+  // HANDLING ADDING USER PROFILE (passing up from AddProfile) --------------------
   const [userProfile, setUserProfile] = useState({})
   const handleSubmitForSetProfileFromApp = (input) => {
     setUserProfile(input)
   }
 
+  // HANDLING EDITING PROFILE (passing up from EditProfile)
+  const [submittedUpdatedProfile, setSubmittedUpdatedProfile] = useState({})
+  const handleSubmitForUpdatedProfileFromApp = (input) => {
+    setSubmittedUpdatedProfile(input)
+  }
+  // 
+
   const [updatedProfile, setUpdatedProfile] = useState({})
-    // UPDATING USER PROFILE
+    // UPDATING USER PROFILE (for both adding, editing (used before updating userInfo))
   const updateUserProfileFromApp = (input) => {
     setUpdatedProfile(input)
   }
-  // 
+
+  console.log('App - userinfo', userInfo)
+  console.log('App - autheninfo', authenInfo)
+  console.log('app - updatedProfile', updatedProfile)
 
 
   return (
@@ -113,6 +122,9 @@ const App = (props) => {
                                   updatedProfile={updatedProfile}
                                   authenInfo={authenInfo}
                                   handleUserInfoFromApp={handleUserInfoFromApp}
+                                  submittedUpdatedProfile={submittedUpdatedProfile}
+                                  handleSubmitForUpdatedProfileFromApp={handleSubmitForUpdatedProfileFromApp}
+
                                   />} />
           {/* <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
                                   handleSubmitForLoginFromApp={handleSubmitForLoginFromApp}/>} />  

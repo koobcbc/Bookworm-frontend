@@ -23,16 +23,18 @@ const Main = ({ userProfile,
                 updateUserProfileFromApp,
                 updatedProfile,
                 authenInfo,
-                handleUserInfoFromApp
+                handleUserInfoFromApp,
+                handleSubmitForUpdatedProfileFromApp,
+                submittedUpdatedProfile
 }) => {
 
-    const [updatedUser, setUpdatedUser] = useState({})
+    // const [updatedUser, setUpdatedUser] = useState({})
     
     const history = useHistory();
     let FormData = require('form-data');
 
-    console.log('Main - userProfile', userProfile)
 
+    // ADDING NEW PROFILE
     let ProfileFormdata = new FormData();
     ProfileFormdata.append("profile[nickname]", userProfile.nickname);
     ProfileFormdata.append("profile[description]", userProfile.description);
@@ -50,15 +52,59 @@ const Main = ({ userProfile,
             };
             
             fetch(`${apiUrl}/users/${userInfo.id}/profiles`, requestOptions)
-                .then(response => response.text())
+                .then(response => response.json())
                 .then(result => {console.log(result)
                                 updateUserProfileFromApp(result)})
                 .catch(error => console.log('error', error));
                 // history.push("/main/mypage");
+            fetchUpdatedUserInfo(authenInfo.token.token, authenInfo.id.id)
+
+        }
+    }, [userProfile])
+
+    console.log('Main - userProfile', userProfile)
+    console.log('Main- authenInfo', authenInfo)
+    console.log('Main - userInfo', userInfo)
+    console.log('Main - submittedUpdatedProfile', submittedUpdatedProfile)
+    console.log('Main - userProfile', updatedProfile)
+
+    // UPDATING (PATCH) DATA
+
+    let ProfileUpdateFormdata = new FormData();
+    ProfileUpdateFormdata.append("profile[nickname]", submittedUpdatedProfile.nickname);
+    ProfileUpdateFormdata.append("profile[description]", submittedUpdatedProfile.description);
+    ProfileUpdateFormdata.append("profile[profilePicture]", submittedUpdatedProfile.profilePicture);
+    ProfileUpdateFormdata.append("profile[readingGoal]", submittedUpdatedProfile.readingGoal);
+
+    useEffect(()=>{
+        if(submittedUpdatedProfile.nickname !== "" && userInfo.id!==undefined){
+            console.log('fetching profile data from Main')
+            // POSTING PROFILE DATA TO THE USER
+            var requestOptionsUpdate = {
+                method: 'PUT',
+                body: ProfileUpdateFormdata,
+                redirect: 'follow'
+              };
+            
+            let fetchForUpdateUrl = `${apiUrl}/users/${userInfo.id}/profiles/${userInfo.profile.id}`
+            console.log('fetching (put) updating profile from', fetchForUpdateUrl)
+
+            fetch(fetchForUpdateUrl, requestOptionsUpdate)
+                .then(response => response.json())
+                .then(result => {console.log(result)
+                                updateUserProfileFromApp(result)
+                                fetchUpdatedUserInfo(authenInfo.token.token, authenInfo.id.id)})
+                .catch(error => console.log('error', error));
+                // history.push("/main/mypage");
+        }
+    }, [submittedUpdatedProfile])
 
             // FETCHING USER DATA AGAIN TO UPDATE DATA
+    const fetchUpdatedUserInfo = (token, id) => {        
             let myHeaders = new Headers();
-            myHeaders.append("Authorization", `Bearer ${authenInfo.token}`);
+            myHeaders.append("Authorization", `Bearer ${token}`);
+
+            console.log('fetchUpdatedUserInfo', token, id)
 
             let requestOptionsChangeInfo = {
             method: 'GET',
@@ -66,7 +112,7 @@ const Main = ({ userProfile,
             redirect: 'follow'
             };
 
-            fetch(`${apiUrl}/users/${userInfo.id}`, requestOptionsChangeInfo)
+            fetch(`${apiUrl}/users/${id}`, requestOptionsChangeInfo)
             .then(response => response.json())
             .then(result => {
                 console.log(result)
@@ -74,9 +120,8 @@ const Main = ({ userProfile,
             })
             .catch(error => console.log('error', error));
             history.push("/main/mypage");
-            
-        }
-    }, [userProfile])
+    }
+
 
     return (
         <div className="Main">
@@ -87,7 +132,7 @@ const Main = ({ userProfile,
             <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
                                   handleSubmitForSetProfileFromApp={handleSubmitForSetProfileFromApp}/>} />
             <Route path='/main/mypage/edit-profile' render={(props) => <EditProfile {...props} 
-                                  handleSubmitForSetProfileFromApp={handleSubmitForSetProfileFromApp}/>} />  
+                                  handleSubmitForUpdatedProfileFromApp={handleSubmitForUpdatedProfileFromApp}/>} />  
             <Route path='/main/mypage' render={(props) => <Mypage {...props} 
                                   userInfo={userInfo}
                                   />} />                                          

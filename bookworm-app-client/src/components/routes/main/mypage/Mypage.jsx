@@ -8,6 +8,7 @@ const Mypage = ({ userInfo }) => {
 
     console.log('mypage - userinfo', userInfo)
 
+    {
     // userInfo = {
     //     "id": 1,
     //     "username": "katy",
@@ -108,6 +109,7 @@ const Mypage = ({ userInfo }) => {
     //         }
     //     ]
     // }
+}
 
     return (
         <>
@@ -128,7 +130,7 @@ const Mypage = ({ userInfo }) => {
                             </div>
                             <div>
                                 <p>No profile yet</p>
-                                <Link to='/main/mypage/add-profile'><Button>Edit Your Profile Here</Button></Link>
+                                <Link to='/main/mypage/edit-profile'><Button>Edit Your Profile Here</Button></Link>
                             </div>
                         </div> 
                     : 
