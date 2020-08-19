@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
 
 import Nav from "../../../shared/Nav"
 
-const Mypage = ({ userInfo }) => {
+const Mypage = ({ userInfo, selectedBookisbn }) => {
 
     console.log('mypage - userinfo', userInfo)
-
+    console.log('mypage - userinfo id', userInfo.id)
     {
     // userInfo = {
     //     "id": 1,
@@ -110,6 +110,28 @@ const Mypage = ({ userInfo }) => {
     //     ]
     // }
 }
+    console.log('selectedBookIsbn- mypage', selectedBookisbn)
+
+    const history = useHistory();
+    let FormData = require('form-data');
+
+      // Make a POST request for adding books
+    useEffect(()=>{
+        let newBookFormdata = new FormData();
+        newBookFormdata.append("book[isbn]", selectedBookisbn);
+
+    let newBookRequestOptions = {
+        method: 'POST',
+        body: newBookFormdata,
+        redirect: 'follow'
+    };
+
+    fetch(`http://localhost:3000/users/${userInfo.id}/books`, newBookRequestOptions)
+        .then(response => response.text())
+        .then(result => {console.log(result)})
+        .catch(error => console.log('error', error));
+        history.push('/main/mypage')
+        },[selectedBookisbn])
 
     return (
         <>

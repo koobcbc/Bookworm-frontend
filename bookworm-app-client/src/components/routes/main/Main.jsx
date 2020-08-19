@@ -13,6 +13,7 @@ import SearchBooks from '../../routes/main/search/SearchBooks';
 import About from '../../routes/main/About'
 import AddProfile from '../../routes/main/mypage/AddProfile';
 import EditProfile from './mypage/EditProfile';
+import Added from './search/Added';
 
 const Main = ({ userProfile, 
                 userInfo, 
@@ -25,7 +26,9 @@ const Main = ({ userProfile,
                 authenInfo,
                 handleUserInfoFromApp,
                 handleSubmitForUpdatedProfileFromApp,
-                submittedUpdatedProfile
+                submittedUpdatedProfile,
+                handleClickPassIsbnToApp,
+                selectedBookisbn
 }) => {
 
     // const [updatedUser, setUpdatedUser] = useState({})
@@ -128,13 +131,16 @@ const Main = ({ userProfile,
           <div id="content-wrap">
             <Switch>
             <Route path='/main/mypage/book/:isbn' render={(props) => <BookInfo {...props} 
-                                  handleSubmitFromApp={handleSubmitFromApp}/>} />
+                                  handleSubmitFromApp={handleSubmitFromApp}
+                                  handleClickPassIsbnToApp={handleClickPassIsbnToApp}/>} />
             <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
                                   handleSubmitForSetProfileFromApp={handleSubmitForSetProfileFromApp}/>} />
             <Route path='/main/mypage/edit-profile' render={(props) => <EditProfile {...props} 
                                   handleSubmitForUpdatedProfileFromApp={handleSubmitForUpdatedProfileFromApp}/>} />  
+            <Route path='/main/mypage/added' components={Added}/>
             <Route path='/main/mypage' render={(props) => <Mypage {...props} 
                                   userInfo={userInfo}
+                                  selectedBookisbn={selectedBookisbn}
                                   />} />                                          
             <Route path='/main/search' render={(props) => <SearchBooks {...props} 
                                   handleSubmitFromAppSearchingKeyword={handleSubmitFromAppSearchingKeyword}

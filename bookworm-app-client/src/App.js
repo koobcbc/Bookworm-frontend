@@ -102,6 +102,15 @@ const App = (props) => {
   console.log('app - updatedProfile', updatedProfile)
 
 
+  // add book to my books
+  const [selectedBookisbn, setSelectedBookisbn] = useState("")
+
+  const handleClickPassIsbnToApp = (isbn) => {
+    console.log('handleclickpassisbntoapp', isbn)
+    setSelectedBookisbn(isbn)
+  }
+
+
   return (
     <div className="App">
       <div id="content-wrap">
@@ -124,7 +133,8 @@ const App = (props) => {
                                   handleUserInfoFromApp={handleUserInfoFromApp}
                                   submittedUpdatedProfile={submittedUpdatedProfile}
                                   handleSubmitForUpdatedProfileFromApp={handleSubmitForUpdatedProfileFromApp}
-
+                                  handleClickPassIsbnToApp={handleClickPassIsbnToApp}
+                                  selectedBookisbn={selectedBookisbn}
                                   />} />
           {/* <Route path='/main/mypage/add-profile' render={(props) => <AddProfile {...props} 
                                   handleSubmitForLoginFromApp={handleSubmitForLoginFromApp}/>} />  

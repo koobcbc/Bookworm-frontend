@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 
 import Nav from '../../../shared/Nav';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
-const BookInfo = () => {
+const BookInfo = ({ handleClickPassIsbnToApp }) => {
     let { isbn } = useParams();
     console.log(isbn)
 
@@ -23,6 +24,7 @@ const BookInfo = () => {
 
     console.log('bookinfo- ',bookInfo)
     
+                                                   
     return(
         <>
         <Nav />
@@ -44,6 +46,9 @@ const BookInfo = () => {
 
             </>
         : <p>Loading...</p>}
+        <div>
+            <Button onClick={() => handleClickPassIsbnToApp(isbn)}>Add to Read List</Button>
+        </div>
         <Link to="/main/mypage"><p>Back to My Page</p></Link>
         </>
     )
