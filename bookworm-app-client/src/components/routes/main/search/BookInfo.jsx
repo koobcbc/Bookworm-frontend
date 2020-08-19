@@ -38,7 +38,7 @@ const BookInfo = () => {
                 <p>Published Date: {bookInfo.volumeInfo.publishedDate}</p>
                 <p>Short Description: {bookInfo.volumeInfo.description}</p>
                 <p>Page Count: {bookInfo.volumeInfo.pageCount}</p>
-                <p>Average Rating: {bookInfo.volumeInfo.averageRating} (Ratings Count: {bookInfo.volumeInfo.ratingsCount})</p>
+                {bookInfo.volumeInfo.averageRating ? <p>Average Rating: {bookInfo.volumeInfo.averageRating} (Ratings Count: {bookInfo.volumeInfo.ratingsCount})</p>: null}
                 <a href={bookInfo.volumeInfo.previewLink}>Preview in Google Books</a>
             </div> 
 
