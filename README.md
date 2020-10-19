@@ -7,7 +7,7 @@
 
 # Project Links 
 ## Project URL
-- [Deployment Link]()
+- [Deployment Link](https://bookend-app.netlify.app/)
 
 ## Git Repos
 - [frontend git](https://github.com/koobcbc/Bookworm-frontend) 
