@@ -97,6 +97,14 @@
   margin: auto;
 }
 
+.my_books_read{
+  padding: 10px;
+}
+
+.my_books_read img {
+  padding: 5px;
+}
+
 .book_info{
   border: 1px solid black;
   width: 500px;
