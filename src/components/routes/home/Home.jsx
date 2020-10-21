@@ -76,10 +76,10 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
 
     return(
         <>
-            <nav class="navbar navbar-light bg-light">
+            <nav className="navbar navbar-light bg-light">
                 <Link to='/'><img src={titlelogo} display="inline-block" height="45px"/></Link>
-                <Link to="/" class="navbar-brand login-brand"></Link>
-                <Link to="/signup"><button type="button" class="btn btn-outline-secondary">Sign Up</button></Link>
+                <Link to="/" className="navbar-brand login-brand"></Link>
+                <Link to="/signup"><button type="button" className="btn btn-outline-secondary">Sign Up</button></Link>
             </nav>
 
             <br/>
@@ -88,7 +88,7 @@ const Home = ({ handleUserInfoFromApp, handleAuthenInfoFromApp }) => {
             <LoginForm handleSubmitForLoginFromHome={handleSubmitForLoginFromHome}/>
             <br/>
             {loginSuccessful ? null :
-                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert-box">
+                <div className="alert alert-warning alert-dismissible fade show" role="alert" id="alert-box">
                 <strong>Error! </strong> Username/Password Incorrect.
                 <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
