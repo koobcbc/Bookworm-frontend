@@ -1,68 +1,199 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# BookWorm Project
 
-## Available Scripts
+# Description
 
-In the project directory, you can run:
+-   Bookworm is an application that allows users to leave notes/review/stars/favorite quotes on any books they have read. The app allows users to view, update, and delete their previous reviews. The app also keeps track of statistics of number of books read, and also gives a statistics on what type of books you enjoy.
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Project Links 
+## Project URL
+- [Deployment Link](https://bookend-app.netlify.app/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Git Repos
+- [frontend git](https://github.com/koobcbc/Bookworm-frontend) 
+- [backend git](https://github.com/koobcbc/Bookworm-backend)
 
-### `yarn test`
+## API
+- https://www.googleapis.com/books/v1/volumes?q={search terms}
+- Example: https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Snippet of API
+```
+{
+    "kind": "books#volumes",
+    "totalItems": 119,
+    "items": [
+    {
+        "kind": "books#volume",
+        "id": "gK98gXR8onwC",
+        "etag": "+bk95ZFRnSM",
+        "selfLink": "https://www.googleapis.com/books/v1/volumes/gK98gXR8onwC",
+        "volumeInfo": {
+        "title": "Flowers for Algernon",
+        "subtitle": "A One-act Play",
+        "authors": [],
+        "publisher": "Dramatic Publishing",
+        "publishedDate": "1969",
+        "industryIdentifiers": [],
+        "readingModes": {},
+        "pageCount": 32,
+        "printType": "BOOK",
+        "averageRating": 5,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.0.2.0.preview.1",
+        "panelizationSummary": {},
+        "imageLinks": {},
+        "language": "en",
+        "previewLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&pg=PA3&dq=flowers+inauthor:keyes&hl=&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.co.kr/books?id=gK98gXR8onwC&dq=flowers+inauthor:keyes&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Flowers_for_Algernon.html?hl=&id=gK98gXR8onwC"
+        },
+        "saleInfo": {},
+        "accessInfo": {},
+        "searchInfo": {}
+    }
+}
+```
 
-### `yarn build`
+# Wireframs/Architecture
+- [WireFrame](https://www.figma.com/file/HL5L6aIwSGxrY9KnjjpSPg/BookWorm-MovieWorm?node-id=0%3A1)
+- [React Architecture](https://docs.google.com/spreadsheets/d/1zW6M2NflVrBahyQOWUelU3vA32yDPH29mvx0glE2lOs/edit?usp=sharing)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Time Priority Matrix/Chart
+  
+| Component | Priority | Estimated Time | Time Invetsted | Actual Time |
+| --- | :---: |  :---: | :---: | :---: |
+| Create Model | E | 2hrs | 2hrs | 2hrs |
+| Create Controller | E | 2hrs | 5hrs | 5hrs |
+| Setup Server | E | .5hr| .5hrs | .5hrs |
+| Set up Connections  | E | .5hrs| 2hrs | 2hrs |
+| create Seed File  | M | 2hrs | 2hrs | 2hrs |
+| Research for Seed Data | E | 3hrs| 2hrs | 2hrs |
+| Deployment  | H | 1hr| 4hrs | 4hrs |
+| Total | H | 10hrs | hrs | hrs |
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+| Component | Priority | Estimated Time | Time Invetsted | Actual Time |
+| --- | :---: |  :---: | :---: | :---: |
+| Create react app and components| H | .5hr| .5hr | .5hr |
+| Install packages and Set up React Routing | H | .5hr| .5hr | .5hr |
+| Create User Authentication | H | 4hrs | 8hrs | 8hrs |
+| Make APIcall from App | H | .5hr| 1hr |1hr  |
+| Set up the layout components (Header, NavBar, Footer) | H | .5hr | 1hr | 1hr |
+| Searchbox for Books | H | 5hrs |5hrs |5hrs |
+| Displaying information on Searched Book | H | 3hrs | 4hrs|4hrs |
+| ReviewForm component | H | 4hrs |  |  |
+| Functionality of adding reviews, notes, starts | H | 2hr|  |  |
+| MyPage component + My Bookcase| H | 8hr|  |  |
+| make delete / filter functionality in Past Reviews | H | 2hrs|  |  |
+| Favorite Quotes component | H | 1.5hr | | |
+| Basic Styling for nav, footer, about page | H | 2hrs| .5hrs | .5hrs |
+| Basic Styling for main | H | 6hrs| 4hrs | 4hrs |
+| Total | H | 39.5hrs|  |  | 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### MVP
+- Create PostgresDB using Ruby on Rails
+- Use the api created by PostgresDB & Google Books
+- Create routes between components in React
+- Allow user to search for books and display information
+- Allow user to write reviews
+- Create CRUD Functionality for personal book data
+- Create User Login / Verification using React 
 
-### `yarn eject`
+#### PostMVP
+- Allow user to set a goal
+- Creating MovieWorm, which would be an similar application but for movies
+- Create characters based on reading levels + different costumes that unlock based on # of movies watched
+- Additional Styling and animations
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Components description
+- Header
+    - Header includes Logo and title of the page
+- Nav
+    - Navigation bar that allows user to navigate through searchBooks, searchMovies, MyPage, Summary, About pages
+- Footer
+    - Shared component with copyright info etc.
+- Home
+    - Home Page of the website that includes logo, title of the app, and log in form.
+- Authentication
+    - User Log in page
+- Main
+    - Main page that users get navigated into when logged in. This page includes this month's recommendations for books and movies
+- RecBooks
+    - This component generates monthly recommendation for books
+- SearchBook
+    - Search box for books, renders information on the searched book
+- BookInfo
+    - Shows info on book that was searched.
+- RecordBook
+    - Allows the user to write a review and give stars on the book
+- Note
+    - A form that is used for writing personal notes on a particular book
+- Quote
+    - A form that allows user to add their favorite quotes from a particular book
+- StarReview
+    - A component that allows user to give stars on a book
+- MyPage
+    - Page where users can view their profile / information and their reviews on the books they read / compilation of their favorite quotes / monthly stats of reading
+- MyBookcase
+    - Overview of the books that the user has read. This component includes a filter function based on dates.
+- Book
+    - When the user clicks on a single book in MyBookcase, it is routed to this component displaying information / reviews on the book selected
+- FavQuotes
+    - List of Favorite Quotes from the user. Drops down with an accordion dropdown function.
+- Profile
+    - Displays user's nickname, description, profile pic, goal of the year, statistics on the books read
+- Statistics
+    - Displays statistics on the books read (show which genre you read the most, # of books read)
+- Feedback
+    - Through this form, the user is able to send feedback of the app to the creator of the app.
+- Logout
+    - Log out function
+- About
+  - This will be about page with the description of the app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Backend Description
+- Models/Schemas
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Book Model
+    - title - string (required)
+    - authors - string (required)
+    - year - string (required)
+    - publisher - string (required)
+    - imageLinks - array of strings (required)
+    - pageNumber - integer (required)
+    - description - text (required)
+    - language - string
+    - categories - array of strings
+    - canonicalVolumeLink - string
+    - starRating - integer 
+    - reviews - array of strings
+    - notes - array of strings
+    - quotes - array of strings
+    - profileId - integer
 
-## Learn More
+- User Model
+    - nickname - string (required)
+    - description - string
+    - profilePicture - string
+    - readingGoal - integer
+    - totalPageNum - integer
+    - books [Book Model scaffolded]
+    
+- Feedback Model
+    - feedback - array of strings
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Additional libraries
+- Axios
+- React
+- Node
+- Express
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Code Snippet 
+- project code 
 
-### Code Splitting
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
