@@ -195,5 +195,58 @@ Snippet of API
 - project code 
 
 ```
+return(
+        <>
+        {searchedBooks.totalItems ?
+            <div>
+                <h3>Search Results ({searchedBooks.totalItems})</h3>
+                {searchedBooks.totalItems>15 ? <p>Showing top 15 results:</p> : null}
+                <div className="search_result_div">
+                {searchedBooks.items.map((book, index)=>{
+                    return(
+                    (book.volumeInfo.industryIdentifiers && book.volumeInfo.authors) ?
+                    book.volumeInfo.industryIdentifiers[0].type !== "OTHER" && book.volumeInfo.language=="en"?
+                    <div className="search_result_individual_div">
+                        <Link to={"/main/mypage/book/"+book.volumeInfo.industryIdentifiers[0].identifier} ><img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} height="100px" className="search_result_img"/></Link>
+                        <p className="search_result_title">Title: {book.volumeInfo.title}</p>
+                        <p className="search_result_authors">Author(s): {book.volumeInfo.authors.map((author)=>{
+                            return(<p className="search_result_author">{author}</p>)
+                        })}</p>
+                        <p className="search_result_publisher">Publisher: {book.volumeInfo.publisher}</p>
+                    </div> : null
+                    : null)
+                })}
+                </div>
+            </div>
+        : null}
+        </>
+    )
+```
+```
+useEffect(()=>{
+        let newBookFormdata = new FormData();
+        newBookFormdata.append("book[isbn]", selectedBookisbn.isbn);
+        newBookFormdata.append("book[title]", selectedBookisbn.title);
+        newBookFormdata.append("book[image_url]", selectedBookisbn.image_url);
+        
+        console.log(newBookFormdata)
 
+        let newBookRequestOptions = {
+            method: 'POST',
+            body: newBookFormdata,
+            redirect: 'follow'
+        };
+
+        fetch(`${apiUrl}/users/${userInfo.id}/books`, newBookRequestOptions)
+            .then(response => response.text())
+            .then(result => {console.log(result)
+                            if(selectedBookisbn.title!==""){
+                            fetchUpdatedUserInfo(authenInfo.token.token, authenInfo.id.id)
+                            
+                            }
+                        })
+            .catch(error => {console.log('error', error)});
+            history.push(`/main/mypage/book/${isbn}`)
+            
+        },[selectedBookisbn])    
 ```
